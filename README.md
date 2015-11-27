@@ -1,6 +1,6 @@
-# Airbnb JavaScript Style Guide() {
+# POKE JavaScript Style Guide() {
 
-*A mostly reasonable approach to JavaScript*
+*A mostly reasonable approach to JavaScript, based in no small part on the fine work of the folks at [Airbnb](https://github.com/airbnb/javascript)*
 
 ## Table of Contents
 
@@ -25,15 +25,7 @@
 1. [Events](#events)
 1. [Modules](#modules)
 1. [jQuery](#jquery)
-1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
-1. [Testing](#testing)
 1. [Performance](#performance)
-1. [Resources](#resources)
-1. [In the Wild](#in-the-wild)
-1. [Translation](#translation)
-1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
-1. [Chat With Us About Javascript](#chat-with-us-about-javascript)
-1. [Contributors](#contributors)
 1. [License](#license)
 
 ## Types
@@ -88,14 +80,14 @@
     ```javascript
     // bad
     var superman = {
-      default: { clark: 'kent' },
-      private: true
+        default: { clark: 'kent' },
+        private: true
     };
 
     // good
     var superman = {
-      defaults: { clark: 'kent' },
-      hidden: true
+        defaults: { clark: 'kent' },
+        hidden: true
     };
     ```
 
@@ -104,17 +96,17 @@
     ```javascript
     // bad
     var superman = {
-      class: 'alien'
+        class: 'alien'
     };
 
     // bad
     var superman = {
-      klass: 'alien'
+        klass: 'alien'
     };
 
     // good
     var superman = {
-      type: 'alien'
+        type: 'alien'
     };
     ```
 
@@ -206,8 +198,8 @@
 
     // good
     var errorMessage = 'This is a super long error that was thrown because ' +
-      'of Batman. When you stop to think about how Batman had anything to do ' +
-      'with this, you would get nowhere fast.';
+        'of Batman. When you stop to think about how Batman had anything to do ' +
+        'with this, you would get nowhere fast.';
     ```
 
   - When programmatically building up a string, use Array#join instead of string concatenation. Mostly for IE: [jsPerf](http://jsperf.com/string-vs-array-concat/2).
@@ -219,39 +211,39 @@
     var i;
 
     messages = [{
-      state: 'success',
-      message: 'This one worked.'
+        state: 'success',
+        message: 'This one worked.'
     }, {
-      state: 'success',
-      message: 'This one worked as well.'
+        state: 'success',
+        message: 'This one worked as well.'
     }, {
-      state: 'error',
-      message: 'This one did not work.'
+        state: 'error',
+        message: 'This one did not work.'
     }];
 
     length = messages.length;
 
     // bad
     function inbox(messages) {
-      items = '<ul>';
+        items = '<ul>';
 
-      for (i = 0; i < length; i++) {
-        items += '<li>' + messages[i].message + '</li>';
-      }
+        for (i = 0; i < length; i++) {
+            items += '<li>' + messages[i].message + '</li>';
+        }
 
-      return items + '</ul>';
+        return items + '</ul>';
     }
 
     // good
     function inbox(messages) {
-      items = [];
+        items = [];
 
-      for (i = 0; i < length; i++) {
-        // use direct assignment in this case because we're micro-optimizing.
-        items[i] = '<li>' + messages[i].message + '</li>';
-      }
+        for (i = 0; i < length; i++) {
+          // use direct assignment in this case because we're micro-optimizing.
+          items[i] = '<li>' + messages[i].message + '</li>';
+        }
 
-      return '<ul>' + items.join('') + '</ul>';
+        return '<ul>' + items.join('') + '</ul>';
     }
     ```
 
@@ -265,17 +257,17 @@
     ```javascript
     // anonymous function expression
     var anonymous = function() {
-      return true;
+        return true;
     };
 
     // named function expression
     var named = function named() {
-      return true;
+        return true;
     };
 
     // immediately-invoked function expression (IIFE)
     (function() {
-      console.log('Welcome to the Internet. Please follow me.');
+        console.log('Welcome to the Internet. Please follow me.');
     })();
     ```
 
@@ -285,17 +277,17 @@
     ```javascript
     // bad
     if (currentUser) {
-      function test() {
-        console.log('Nope.');
-      }
+        function test() {
+          console.log('Nope.');
+        }
     }
 
     // good
     var test;
     if (currentUser) {
-      test = function test() {
-        console.log('Yup.');
-      };
+        test = function test() {
+          console.log('Yup.');
+        };
     }
     ```
 
@@ -304,12 +296,12 @@
     ```javascript
     // bad
     function nope(name, options, arguments) {
-      // ...stuff...
+        // ...stuff...
     }
 
     // good
     function yup(name, options, args) {
-      // ...stuff...
+        // ...stuff...
     }
     ```
 
@@ -323,8 +315,8 @@
 
     ```javascript
     var luke = {
-      jedi: true,
-      age: 28
+        jedi: true,
+        age: 28
     };
 
     // bad
@@ -338,12 +330,12 @@
 
     ```javascript
     var luke = {
-      jedi: true,
-      age: 28
+        jedi: true,
+        age: 28
     };
 
     function getProp(prop) {
-      return luke[prop];
+        return luke[prop];
     }
 
     var isJedi = getProp('jedi');
@@ -415,61 +407,61 @@
     ```javascript
     // bad
     function() {
-      test();
-      console.log('doing stuff..');
+        test();
+        console.log('doing stuff..');
 
-      //..other stuff..
+        //..other stuff..
 
-      var name = getName();
+        var name = getName();
 
-      if (name === 'test') {
-        return false;
-      }
+        if (name === 'test') {
+          return false;
+        }
 
-      return name;
+        return name;
     }
 
     // good
     function() {
-      var name = getName();
+        var name = getName();
 
-      test();
-      console.log('doing stuff..');
+        test();
+        console.log('doing stuff..');
 
-      //..other stuff..
+        //..other stuff..
 
-      if (name === 'test') {
-        return false;
-      }
+        if (name === 'test') {
+          return false;
+        }
 
-      return name;
+        return name;
     }
 
     // bad - unnecessary function call
     function() {
-      var name = getName();
+        var name = getName();
 
-      if (!arguments.length) {
-        return false;
-      }
+        if (!arguments.length) {
+          return false;
+        }
 
-      this.setFirstName(name);
+        this.setFirstName(name);
 
-      return true;
+        return true;
     }
 
     // good
     function() {
-      var name;
+        var name;
 
-      if (!arguments.length) {
-        return false;
-      }
+        if (!arguments.length) {
+          return false;
+        }
 
-      name = getName();
-      this.setFirstName(name);
+        name = getName();
+        this.setFirstName(name);
 
-      return true;
+        return true;
     }
     ```
 
@@ -484,7 +476,7 @@
     // we know this wouldn't work (assuming there
     // is no notDefined global variable)
     function example() {
-      console.log(notDefined); // => throws a ReferenceError
+        console.log(notDefined); // => throws a ReferenceError
     }
 
     // creating a variable declaration after you
@@ -492,17 +484,17 @@
     // variable hoisting. Note: the assignment
     // value of `true` is not hoisted.
     function example() {
-      console.log(declaredButNotAssigned); // => undefined
-      var declaredButNotAssigned = true;
+        console.log(declaredButNotAssigned); // => undefined
+        var declaredButNotAssigned = true;
     }
 
     // The interpreter is hoisting the variable
     // declaration to the top of the scope,
     // which means our example could be rewritten as:
     function example() {
-      var declaredButNotAssigned;
-      console.log(declaredButNotAssigned); // => undefined
-      declaredButNotAssigned = true;
+        var declaredButNotAssigned;
+        console.log(declaredButNotAssigned); // => undefined
+        declaredButNotAssigned = true;
     }
     ```
 
@@ -510,13 +502,13 @@
 
     ```javascript
     function example() {
-      console.log(anonymous); // => undefined
+        console.log(anonymous); // => undefined
 
-      anonymous(); // => TypeError anonymous is not a function
+        anonymous(); // => TypeError anonymous is not a function
 
-      var anonymous = function() {
-        console.log('anonymous function expression');
-      };
+        var anonymous = function() {
+          console.log('anonymous function expression');
+        };
     }
     ```
 
@@ -524,27 +516,27 @@
 
     ```javascript
     function example() {
-      console.log(named); // => undefined
+        console.log(named); // => undefined
 
-      named(); // => TypeError named is not a function
+        named(); // => TypeError named is not a function
 
-      superPower(); // => ReferenceError superPower is not defined
+        superPower(); // => ReferenceError superPower is not defined
 
-      var named = function superPower() {
-        console.log('Flying');
-      };
+        var named = function superPower() {
+            console.log('Flying');
+        };
     }
 
     // the same is true when the function name
     // is the same as the variable name.
     function example() {
-      console.log(named); // => undefined
+        console.log(named); // => undefined
 
-      named(); // => TypeError named is not a function
+        named(); // => TypeError named is not a function
 
-      var named = function named() {
-        console.log('named');
-      }
+        var named = function named() {
+          console.log('named');
+        }
     }
     ```
 
@@ -552,11 +544,11 @@
 
     ```javascript
     function example() {
-      superPower(); // => Flying
+        superPower(); // => Flying
 
-      function superPower() {
-        console.log('Flying');
-      }
+        function superPower() {
+          console.log('Flying');
+        }
     }
     ```
 
@@ -580,8 +572,8 @@
 
     ```javascript
     if ([0]) {
-      // true
-      // An array is an object, objects evaluate to true
+        // true
+        // An array is an object, objects evaluate to true
     }
     ```
 
@@ -590,22 +582,22 @@
     ```javascript
     // bad
     if (name !== '') {
-      // ...stuff...
+        // ...stuff...
     }
 
     // good
     if (name) {
-      // ...stuff...
+        // ...stuff...
     }
 
     // bad
     if (collection.length > 0) {
-      // ...stuff...
+        // ...stuff...
     }
 
     // good
     if (collection.length) {
-      // ...stuff...
+        // ...stuff...
     }
     ```
 
@@ -621,14 +613,14 @@
     ```javascript
     // bad
     if (test)
-      return false;
+        return false;
 
     // good
     if (test) return false;
 
     // good
     if (test) {
-      return false;
+        return false;
     }
 
     // bad
@@ -636,7 +628,7 @@
 
     // good
     function() {
-      return false;
+        return false;
     }
     ```
 
@@ -646,19 +638,19 @@
     ```javascript
     // bad
     if (test) {
-      thing1();
-      thing2();
+        thing1();
+        thing2();
     }
     else {
-      thing3();
+        thing3();
     }
 
     // good
     if (test) {
-      thing1();
-      thing2();
+        thing1();
+        thing2();
     } else {
-      thing3();
+        thing3();
     }
     ```
 
@@ -679,9 +671,9 @@
     // @return {Element} element
     function make(tag) {
 
-      // ...stuff...
+        // ...stuff...
 
-      return element;
+        return element;
     }
 
     // good
@@ -694,9 +686,9 @@
      */
     function make(tag) {
 
-      // ...stuff...
+        // ...stuff...
 
-      return element;
+        return element;
     }
     ```
 
@@ -712,21 +704,21 @@
 
     // bad
     function getType() {
-      console.log('fetching type...');
-      // set the default type to 'no type'
-      var type = this._type || 'no type';
+        console.log('fetching type...');
+        // set the default type to 'no type'
+        var type = this._type || 'no type';
 
-      return type;
+        return type;
     }
 
     // good
     function getType() {
-      console.log('fetching type...');
+        console.log('fetching type...');
 
-      // set the default type to 'no type'
-      var type = this._type || 'no type';
+        // set the default type to 'no type'
+        var type = this._type || 'no type';
 
-      return type;
+        return type;
     }
     ```
 
@@ -737,10 +729,10 @@
     ```javascript
     function Calculator() {
 
-      // FIXME: shouldn't use a global here
-      total = 0;
+        // FIXME: shouldn't use a global here
+        total = 0;
 
-      return this;
+        return this;
     }
     ```
 
@@ -749,10 +741,10 @@
     ```javascript
     function Calculator() {
 
-      // TODO: total should be configurable by an options param
-      this.total = 0;
+        // TODO: total should be configurable by an options param
+        this.total = 0;
 
-      return this;
+        return this;
     }
     ```
 
@@ -761,12 +753,12 @@
 
 ## Whitespace
 
-  - Use soft tabs set to 2 spaces.
+  - Use soft tabs set to 4 spaces.
 
     ```javascript
     // bad
     function() {
-    ∙∙∙∙var name;
+    ∙∙var name;
     }
 
     // bad
@@ -776,7 +768,7 @@
 
     // good
     function() {
-    ∙∙var name;
+    ∙∙∙∙var name;
     }
     ```
 
@@ -785,24 +777,24 @@
     ```javascript
     // bad
     function test(){
-      console.log('test');
+        console.log('test');
     }
 
     // good
     function test() {
-      console.log('test');
+        console.log('test');
     }
 
     // bad
     dog.set('attr',{
-      age: '1 year',
-      breed: 'Bernese Mountain Dog'
+        age: '1 year',
+        breed: 'Bernese Mountain Dog'
     });
 
     // good
     dog.set('attr', {
-      age: '1 year',
-      breed: 'Bernese Mountain Dog'
+        age: '1 year',
+        breed: 'Bernese Mountain Dog'
     });
     ```
 
@@ -811,22 +803,22 @@
     ```javascript
     // bad
     if(isJedi) {
-      fight ();
+        fight ();
     }
 
     // good
     if (isJedi) {
-      fight();
+        fight();
     }
 
     // bad
     function fight () {
-      console.log ('Swooosh!');
+        console.log ('Swooosh!');
     }
 
     // good
     function fight() {
-      console.log('Swooosh!');
+        console.log('Swooosh!');
     }
     ```
 
@@ -852,7 +844,7 @@
     ```javascript
     // bad
     (function(global) {
-      // ...stuff...
+        // ...stuff...
     })(this);↵
     ↵
     ```
@@ -860,7 +852,7 @@
     ```javascript
     // good
     (function(global) {
-      // ...stuff...
+        // ...stuff...
     })(this);↵
     ```
 
@@ -873,19 +865,19 @@
 
     // bad
     $('#items').
-      find('.selected').
-        highlight().
-        end().
-      find('.open').
-        updateCount();
+        find('.selected').
+            highlight().
+            end().
+        find('.open').
+            updateCount();
 
     // good
     $('#items')
-      .find('.selected')
-        .highlight()
-        .end()
-      .find('.open')
-        .updateCount();
+        .find('.selected')
+            .highlight()
+            .end()
+        .find('.open')
+            .updateCount();
 
     // bad
     var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').classed('led', true)
@@ -895,12 +887,12 @@
 
     // good
     var leds = stage.selectAll('.led')
-        .data(data)
-      .enter().append('svg:svg')
-        .classed('led', true)
-        .attr('width', (radius + margin) * 2)
-      .append('svg:g')
-        .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+            .data(data)
+        .enter().append('svg:svg')
+            .classed('led', true)
+            .attr('width', (radius + margin) * 2)
+        .append('svg:g')
+            .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
         .call(tron.led);
     ```
 
@@ -909,33 +901,33 @@
     ```javascript
     // bad
     if (foo) {
-      return bar;
+        return bar;
     }
     return baz;
 
     // good
     if (foo) {
-      return bar;
+        return bar;
     }
 
     return baz;
 
     // bad
     var obj = {
-      foo: function() {
-      },
-      bar: function() {
-      }
+        foo: function() {
+        },
+        bar: function() {
+        }
     };
     return obj;
 
     // good
     var obj = {
-      foo: function() {
-      },
+        foo: function() {
+        },
 
-      bar: function() {
-      }
+        bar: function() {
+        }
     };
 
     return obj;
@@ -958,9 +950,9 @@
 
     // good
     var story = [
-      once,
-      upon,
-      aTime
+        once,
+        upon,
+        aTime
     ];
 
     // bad
@@ -973,10 +965,10 @@
 
     // good
     var hero = {
-      firstName: 'Bob',
-      lastName: 'Parr',
-      heroName: 'Mr. Incredible',
-      superPower: 'strength'
+        firstName: 'Bob',
+        lastName: 'Parr',
+        heroName: 'Mr. Incredible',
+        superPower: 'strength'
     };
     ```
 
@@ -987,24 +979,24 @@
     ```javascript
     // bad
     var hero = {
-      firstName: 'Kevin',
-      lastName: 'Flynn',
+        firstName: 'Kevin',
+        lastName: 'Flynn',
     };
 
     var heroes = [
-      'Batman',
-      'Superman',
+        'Batman',
+        'Superman',
     ];
 
     // good
     var hero = {
-      firstName: 'Kevin',
-      lastName: 'Flynn'
+        firstName: 'Kevin',
+        lastName: 'Flynn'
     };
 
     var heroes = [
-      'Batman',
-      'Superman'
+        'Batman',
+        'Superman'
     ];
     ```
 
@@ -1018,20 +1010,20 @@
     ```javascript
     // bad
     (function() {
-      var name = 'Skywalker'
-      return name
+        var name = 'Skywalker'
+        return name
     })()
 
     // good
     (function() {
-      var name = 'Skywalker';
-      return name;
+        var name = 'Skywalker';
+        return name;
     })();
 
     // good (guards against the function becoming an argument when two files with IIFEs are concatenated)
     ;(function() {
-      var name = 'Skywalker';
-      return name;
+        var name = 'Skywalker';
+        return name;
     })();
     ```
 
@@ -1130,12 +1122,12 @@
     ```javascript
     // bad
     function q() {
-      // ...stuff...
+        // ...stuff...
     }
 
     // good
     function query() {
-      // ..stuff..
+        // ..stuff..
     }
     ```
 
@@ -1158,20 +1150,20 @@
     ```javascript
     // bad
     function user(options) {
-      this.name = options.name;
+        this.name = options.name;
     }
 
     var bad = new user({
-      name: 'nope'
+        name: 'nope'
     });
 
     // good
     function User(options) {
-      this.name = options.name;
+        this.name = options.name;
     }
 
     var good = new User({
-      name: 'yup'
+        name: 'yup'
     });
     ```
 
@@ -1186,31 +1178,38 @@
     this._firstName = 'Panda';
     ```
 
-  - When saving a reference to `this` use `_this`.
+  - When saving a reference to `this` use `_this`, but ideally use `$.proxy()` ([info](https://api.jquery.com/jQuery.proxy/)) or `_.bind()` ([link](http://underscorejs.org/#bind)) so you don't have to:
 
     ```javascript
     // bad
     function() {
-      var self = this;
-      return function() {
-        console.log(self);
-      };
+        var self = this;
+        return function() {
+          console.log(self);
+        };
     }
 
     // bad
     function() {
-      var that = this;
-      return function() {
-        console.log(that);
-      };
+        var that = this;
+        return function() {
+            console.log(that);
+        };
     }
 
     // good
     function() {
-      var _this = this;
-      return function() {
-        console.log(_this);
-      };
+        var _this = this;
+        return function() {
+            console.log(_this);
+        };
+    }
+
+    // better
+    function() {
+        return $.proxy(function() {
+            console.log(this);
+        }, this);
     }
     ```
 
@@ -1219,12 +1218,12 @@
     ```javascript
     // bad
     var log = function(msg) {
-      console.log(msg);
+        console.log(msg);
     };
 
     // good
     var log = function log(msg) {
-      console.log(msg);
+        console.log(msg);
     };
     ```
 
@@ -1234,7 +1233,7 @@
     ```javascript
     // file contents
     class CheckBox {
-      // ...
+        // ...
     }
     module.exports = CheckBox;
 
@@ -1276,12 +1275,12 @@
     ```javascript
     // bad
     if (!dragon.age()) {
-      return false;
+        return false;
     }
 
     // good
     if (!dragon.hasAge()) {
-      return false;
+        return false;
     }
     ```
 
@@ -1289,17 +1288,17 @@
 
     ```javascript
     function Jedi(options) {
-      options || (options = {});
-      var lightsaber = options.lightsaber || 'blue';
-      this.set('lightsaber', lightsaber);
+        options || (options = {});
+        var lightsaber = options.lightsaber || 'blue';
+        this.set('lightsaber', lightsaber);
     }
 
     Jedi.prototype.set = function(key, val) {
-      this[key] = val;
+        this[key] = val;
     };
 
     Jedi.prototype.get = function(key) {
-      return this[key];
+        return this[key];
     };
     ```
 
@@ -1312,27 +1311,27 @@
 
     ```javascript
     function Jedi() {
-      console.log('new jedi');
+        console.log('new jedi');
     }
 
     // bad
     Jedi.prototype = {
-      fight: function fight() {
-        console.log('fighting');
-      },
+        fight: function fight() {
+            console.log('fighting');
+        },
 
-      block: function block() {
-        console.log('blocking');
-      }
+        block: function block() {
+            console.log('blocking');
+        }
     };
 
     // good
     Jedi.prototype.fight = function fight() {
-      console.log('fighting');
+        console.log('fighting');
     };
 
     Jedi.prototype.block = function block() {
-      console.log('blocking');
+        console.log('blocking');
     };
     ```
 
@@ -1341,12 +1340,12 @@
     ```javascript
     // bad
     Jedi.prototype.jump = function() {
-      this.jumping = true;
-      return true;
+        this.jumping = true;
+        return true;
     };
 
     Jedi.prototype.setHeight = function(height) {
-      this.height = height;
+        this.height = height;
     };
 
     var luke = new Jedi();
@@ -1355,19 +1354,19 @@
 
     // good
     Jedi.prototype.jump = function() {
-      this.jumping = true;
-      return this;
+        this.jumping = true;
+        return this;
     };
 
     Jedi.prototype.setHeight = function(height) {
-      this.height = height;
-      return this;
+        this.height = height;
+        return this;
     };
 
     var luke = new Jedi();
 
     luke.jump()
-      .setHeight(20);
+        .setHeight(20);
     ```
 
 
@@ -1375,16 +1374,16 @@
 
     ```javascript
     function Jedi(options) {
-      options || (options = {});
-      this.name = options.name || 'no name';
+        options || (options = {});
+        this.name = options.name || 'no name';
     }
 
     Jedi.prototype.getName = function getName() {
-      return this.name;
+        return this.name;
     };
 
     Jedi.prototype.toString = function toString() {
-      return 'Jedi - ' + this.getName();
+        return 'Jedi - ' + this.getName();
     };
     ```
 
@@ -1392,6 +1391,8 @@
 
 
 ## Events
+
+  - When binding to frequently-dispatched events like `scroll` or `resize`, use a throttling library such as Ben Alman's [jQuery Throttle/Debounce](http://benalman.com/projects/jquery-throttle-debounce-plugin/) to limit how often your callbacks run. Where possible, write callbacks that unbind themselves when they are no longer needed, or use helpers like jQuery `.one()`.
 
   - When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass a hash instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:
 
@@ -1402,7 +1403,7 @@
     ...
 
     $(this).on('listingUpdated', function(e, listingId) {
-      // do something with listingId
+        // do something with listingId
     });
     ```
 
@@ -1415,7 +1416,7 @@
     ...
 
     $(this).on('listingUpdated', function(e, data) {
-      // do something with data.listingId
+        // do something with data.listingId
     });
     ```
 
@@ -1433,20 +1434,20 @@
     // fancyInput/fancyInput.js
 
     !function(global) {
-      'use strict';
+        'use strict';
 
-      var previousFancyInput = global.FancyInput;
+        var previousFancyInput = global.FancyInput;
 
-      function FancyInput(options) {
-        this.options = options || {};
-      }
+        function FancyInput(options) {
+            this.options = options || {};
+        }
 
-      FancyInput.noConflict = function noConflict() {
-        global.FancyInput = previousFancyInput;
-        return FancyInput;
-      };
+        FancyInput.noConflict = function noConflict() {
+            global.FancyInput = previousFancyInput;
+            return FancyInput;
+        };
 
-      global.FancyInput = FancyInput;
+        global.FancyInput = FancyInput;
     }(this);
     ```
 
@@ -1470,25 +1471,25 @@
     ```javascript
     // bad
     function setSidebar() {
-      $('.sidebar').hide();
+        $('.sidebar').hide();
 
-      // ...stuff...
+        // ...stuff...
 
-      $('.sidebar').css({
-        'background-color': 'pink'
-      });
+        $('.sidebar').css({
+            'background-color': 'pink'
+        });
     }
 
     // good
     function setSidebar() {
-      var $sidebar = $('.sidebar');
-      $sidebar.hide();
+        var $sidebar = $('.sidebar');
+        $sidebar.hide();
 
-      // ...stuff...
+        // ...stuff...
 
-      $sidebar.css({
-        'background-color': 'pink'
-      });
+        $sidebar.css({
+            'background-color': 'pink'
+        });
     }
     ```
 
@@ -1515,26 +1516,6 @@
 **[⬆ back to top](#table-of-contents)**
 
 
-## ECMAScript 5 Compatibility
-
-  - Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.com/es5-compat-table/).
-
-**[⬆ back to top](#table-of-contents)**
-
-
-## Testing
-
-  - **Yup.**
-
-    ```javascript
-    function() {
-      return true;
-    }
-    ```
-
-**[⬆ back to top](#table-of-contents)**
-
-
 ## Performance
 
   - [On Layout & Web Performance](http://kellegous.com/j/2013/01/26/layout-performance/)
@@ -1547,166 +1528,6 @@
   - Loading...
 
 **[⬆ back to top](#table-of-contents)**
-
-
-## Resources
-
-
-**Read This**
-
-  - [Annotated ECMAScript 5.1](http://es5.github.com/)
-
-**Tools**
-
-  - Code Style Linters
-    + [JSHint](http://www.jshint.com/) - [Airbnb Style .jshintrc](https://github.com/airbnb/javascript/blob/master/linters/jshintrc)
-    + [JSCS](https://github.com/jscs-dev/node-jscs) - [Airbnb Style Preset](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json)
-
-**Other Style Guides**
-
-  - [Google JavaScript Style Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-  - [jQuery Core Style Guidelines](http://docs.jquery.com/JQuery_Core_Style_Guidelines)
-  - [Principles of Writing Consistent, Idiomatic JavaScript](https://github.com/rwldrn/idiomatic.js/)
-  - [JavaScript Standard Style](https://github.com/feross/standard)
-
-**Other Styles**
-
-  - [Naming this in nested functions](https://gist.github.com/4135065) - Christian Johansen
-  - [Conditional Callbacks](https://github.com/airbnb/javascript/issues/52) - Ross Allen
-  - [Popular JavaScript Coding Conventions on Github](http://sideeffect.kr/popularconvention/#javascript) - JeongHoon Byun
-  - [Multiple var statements in JavaScript, not superfluous](http://benalman.com/news/2012/05/multiple-var-statements-javascript/) - Ben Alman
-
-**Further Reading**
-
-  - [Understanding JavaScript Closures](http://javascriptweblog.wordpress.com/2010/10/25/understanding-javascript-closures/) - Angus Croll
-  - [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html) - Dr. Axel Rauschmayer
-  - [You Might Not Need jQuery](http://youmightnotneedjquery.com/) - Zack Bloom & Adam Schwartz
-  - [ES6 Features](https://github.com/lukehoban/es6features) - Luke Hoban
-  - [Frontend Guidelines](https://github.com/bendc/frontend-guidelines) - Benjamin De Cock
-
-**Books**
-
-  - [JavaScript: The Good Parts](http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) - Douglas Crockford
-  - [JavaScript Patterns](http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752) - Stoyan Stefanov
-  - [Pro JavaScript Design Patterns](http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X)  - Ross Harmes and Dustin Diaz
-  - [High Performance Web Sites: Essential Knowledge for Front-End Engineers](http://www.amazon.com/High-Performance-Web-Sites-Essential/dp/0596529309) - Steve Souders
-  - [Maintainable JavaScript](http://www.amazon.com/Maintainable-JavaScript-Nicholas-C-Zakas/dp/1449327680) - Nicholas C. Zakas
-  - [JavaScript Web Applications](http://www.amazon.com/JavaScript-Web-Applications-Alex-MacCaw/dp/144930351X) - Alex MacCaw
-  - [Pro JavaScript Techniques](http://www.amazon.com/Pro-JavaScript-Techniques-John-Resig/dp/1590597273) - John Resig
-  - [Smashing Node.js: JavaScript Everywhere](http://www.amazon.com/Smashing-Node-js-JavaScript-Everywhere-Magazine/dp/1119962595) - Guillermo Rauch
-  - [Secrets of the JavaScript Ninja](http://www.amazon.com/Secrets-JavaScript-Ninja-John-Resig/dp/193398869X) - John Resig and Bear Bibeault
-  - [Human JavaScript](http://humanjavascript.com/) - Henrik Joreteg
-  - [Superhero.js](http://superherojs.com/) - Kim Joar Bekkelund, Mads Mobæk, & Olav Bjorkoy
-  - [JSBooks](http://jsbooks.revolunet.com/) - Julien Bouquillon
-  - [Third Party JavaScript](http://manning.com/vinegar/) - Ben Vinegar and Anton Kovalyov
-  - [Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript](http://amzn.com/0321812182) - David Herman
-  - [Eloquent JavaScript](http://eloquentjavascript.net) - Marijn Haverbeke
-  - [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) - Kyle Simpson
-
-**Blogs**
-
-  - [DailyJS](http://dailyjs.com/)
-  - [JavaScript Weekly](http://javascriptweekly.com/)
-  - [JavaScript, JavaScript...](http://javascriptweblog.wordpress.com/)
-  - [Bocoup Weblog](http://weblog.bocoup.com/)
-  - [Adequately Good](http://www.adequatelygood.com/)
-  - [NCZOnline](http://www.nczonline.net/)
-  - [Perfection Kills](http://perfectionkills.com/)
-  - [Ben Alman](http://benalman.com/)
-  - [Dmitry Baranovskiy](http://dmitry.baranovskiy.com/)
-  - [Dustin Diaz](http://dustindiaz.com/)
-  - [nettuts](http://net.tutsplus.com/?s=javascript)
-
-**Podcasts**
-
-  - [JavaScript Jabber](http://devchat.tv/js-jabber/)
-
-
-**[⬆ back to top](#table-of-contents)**
-
-## In the Wild
-
-  This is a list of organizations that are using this style guide. Send us a pull request or open an issue and we'll add you to the list.
-
-  - **Aan Zee**: [AanZee/javascript](https://github.com/AanZee/javascript)
-  - **Adult Swim**: [adult-swim/javascript](https://github.com/adult-swim/javascript)
-  - **Airbnb**: [airbnb/javascript](https://github.com/airbnb/javascript)
-  - **Apartmint**: [apartmint/javascript](https://github.com/apartmint/javascript)
-  - **Avalara**: [avalara/javascript](https://github.com/avalara/javascript)
-  - **Billabong**: [billabong/javascript](https://github.com/billabong/javascript)
-  - **Compass Learning**: [compasslearning/javascript-style-guide](https://github.com/compasslearning/javascript-style-guide)
-  - **DailyMotion**: [dailymotion/javascript](https://github.com/dailymotion/javascript)
-  - **Digitpaint** [digitpaint/javascript](https://github.com/digitpaint/javascript)
-  - **Evernote**: [evernote/javascript-style-guide](https://github.com/evernote/javascript-style-guide)
-  - **ExactTarget**: [ExactTarget/javascript](https://github.com/ExactTarget/javascript)
-  - **Flexberry**: [Flexberry/javascript-style-guide](https://github.com/Flexberry/javascript-style-guide)
-  - **Gawker Media**: [gawkermedia/javascript](https://github.com/gawkermedia/javascript)
-  - **General Electric**: [GeneralElectric/javascript](https://github.com/GeneralElectric/javascript)
-  - **GoodData**: [gooddata/gdc-js-style](https://github.com/gooddata/gdc-js-style)
-  - **Grooveshark**: [grooveshark/javascript](https://github.com/grooveshark/javascript)
-  - **How About We**: [howaboutwe/javascript](https://github.com/howaboutwe/javascript)
-  - **InfoJobs**: [InfoJobs/JavaScript-Style-Guide](https://github.com/InfoJobs/JavaScript-Style-Guide)
-  - **Intent Media**: [intentmedia/javascript](https://github.com/intentmedia/javascript)
-  - **Jam3**: [Jam3/Javascript-Code-Conventions](https://github.com/Jam3/Javascript-Code-Conventions)
-  - **JSSolutions**: [JSSolutions/javascript](https://github.com/JSSolutions/javascript)
-  - **Kinetica Solutions**: [kinetica/javascript](https://github.com/kinetica/javascript)
-  - **Mighty Spring**: [mightyspring/javascript](https://github.com/mightyspring/javascript)
-  - **MinnPost**: [MinnPost/javascript](https://github.com/MinnPost/javascript)
-  - **ModCloth**: [modcloth/javascript](https://github.com/modcloth/javascript)
-  - **Money Advice Service**: [moneyadviceservice/javascript](https://github.com/moneyadviceservice/javascript)
-  - **Muber**: [muber/javascript](https://github.com/muber/javascript)
-  - **National Geographic**: [natgeo/javascript](https://github.com/natgeo/javascript)
-  - **National Park Service**: [nationalparkservice/javascript](https://github.com/nationalparkservice/javascript)
-  - **Nimbl3**: [nimbl3/javascript](https://github.com/nimbl3/javascript)
-  - **Nordic Venture Family**: [CodeDistillery/javascript](https://github.com/CodeDistillery/javascript)
-  - **Orion Health**: [orionhealth/javascript](https://github.com/orionhealth/javascript)
-  - **Peerby**: [Peerby/javascript](https://github.com/Peerby/javascript)
-  - **Razorfish**: [razorfish/javascript-style-guide](https://github.com/razorfish/javascript-style-guide)
-  - **reddit**: [reddit/styleguide/javascript](https://github.com/reddit/styleguide/tree/master/javascript)
-  - **REI**: [reidev/js-style-guide](https://github.com/reidev/js-style-guide)
-  - **Ripple**: [ripple/javascript-style-guide](https://github.com/ripple/javascript-style-guide)
-  - **SeekingAlpha**: [seekingalpha/javascript-style-guide](https://github.com/seekingalpha/javascript-style-guide)
-  - **Shutterfly**: [shutterfly/javascript](https://github.com/shutterfly/javascript)
-  - **StudentSphere**: [studentsphere/javascript](https://github.com/studentsphere/javascript)
-  - **Super**: [SuperJobs/javascript](https://github.com/SuperJobs/javascript)
-  - **Target**: [target/javascript](https://github.com/target/javascript)
-  - **TheLadders**: [TheLadders/javascript](https://github.com/TheLadders/javascript)
-  - **T4R Technology**: [T4R-Technology/javascript](https://github.com/T4R-Technology/javascript)
-  - **VoxFeed**: [VoxFeed/javascript-style-guide](https://github.com/VoxFeed/javascript-style-guide)
-  - **Weggo**: [Weggo/javascript](https://github.com/Weggo/javascript)
-  - **Zillow**: [zillow/javascript](https://github.com/zillow/javascript)
-  - **ZocDoc**: [ZocDoc/javascript](https://github.com/ZocDoc/javascript)
-
-## Translation
-
-  This style guide is also available in other languages:
-
-  - ![br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Brazilian Portuguese**: [armoucar/javascript-style-guide](https://github.com/armoucar/javascript-style-guide)
-  - ![bg](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Bulgaria.png) **Bulgarian**: [borislavvv/javascript](https://github.com/borislavvv/javascript)
-  - ![ca](https://raw.githubusercontent.com/fpmweb/javascript-style-guide/master/img/catala.png) **Catalan**: [fpmweb/javascript-style-guide](https://github.com/fpmweb/javascript-style-guide)
-  - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese(Traditional)**: [jigsawye/javascript](https://github.com/jigsawye/javascript)
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese(Simplified)**: [sivan/javascript-style-guide](https://github.com/sivan/javascript-style-guide)
-  - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**: [nmussy/javascript-style-guide](https://github.com/nmussy/javascript-style-guide)
-  - ![de](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Germany.png) **German**: [timofurrer/javascript-style-guide](https://github.com/timofurrer/javascript-style-guide)
-  - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [sinkswim/javascript-style-guide](https://github.com/sinkswim/javascript-style-guide)
-  - ![jp](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [mitsuruog/javacript-style-guide](https://github.com/mitsuruog/javacript-style-guide)
-  - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [tipjs/javascript-style-guide](https://github.com/tipjs/javascript-style-guide)
-  - ![pl](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Poland.png) **Polish**: [mjurczyk/javascript](https://github.com/mjurczyk/javascript)
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [uprock/javascript](https://github.com/uprock/javascript)
-  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [paolocarrasco/javascript-style-guide](https://github.com/paolocarrasco/javascript-style-guide)
-  - ![th](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Thailand.png) **Thai**: [lvarayut/javascript-style-guide](https://github.com/lvarayut/javascript-style-guide)
-
-## The JavaScript Style Guide Guide
-
-  - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
-
-## Chat With Us About JavaScript
-
-  - Find us on [gitter](https://gitter.im/airbnb/javascript).
-
-## Contributors
-
-  - [View Contributors](https://github.com/airbnb/javascript/graphs/contributors)
 
 
 ## License
