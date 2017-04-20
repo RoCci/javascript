@@ -1,6 +1,6 @@
-# Airbnb React/JSX Style Guide
+# Poke React/JSX Style Guide
 
-*A mostly reasonable approach to React and JSX*
+*A mostly reasonable approach to React and JSX, based in no small part on the fine work of the folks at [Airbnb](https://github.com/airbnb/javascript/react)*
 
 ## Table of Contents
 
@@ -34,18 +34,18 @@
     ```jsx
     // bad
     const Listing = React.createClass({
-      // ...
-      render() {
-        return <div>{this.state.hello}</div>;
-      }
+        // ...
+        render() {
+            return <div>{this.state.hello}</div>;
+        }
     });
 
     // good
     class Listing extends React.Component {
-      // ...
-      render() {
-        return <div>{this.state.hello}</div>;
-      }
+        // ...
+        render() {
+          return <div>{this.state.hello}</div>;
+        }
     }
     ```
 
@@ -54,19 +54,19 @@
     ```jsx
     // bad
     class Listing extends React.Component {
-      render() {
-        return <div>{this.props.hello}</div>;
-      }
+        render() {
+            return <div>{this.props.hello}</div>;
+        }
     }
 
     // bad (relying on function name inference is discouraged)
     const Listing = ({ hello }) => (
-      <div>{hello}</div>
+        <div>{hello}</div>
     );
 
     // good
     function Listing({ hello }) {
-      return <div>{hello}</div>;
+        return <div>{hello}</div>;
     }
     ```
 
@@ -115,20 +115,20 @@
     ```jsx
     // bad
     export default function withFoo(WrappedComponent) {
-      return function WithFoo(props) {
-        return <WrappedComponent {...props} foo />;
-      }
+        return function WithFoo(props) {
+            return <WrappedComponent {...props} foo />;
+        }
     }
 
     // good
     export default function withFoo(WrappedComponent) {
-      function WithFoo(props) {
-        return <WrappedComponent {...props} foo />;
-      }
+        function WithFoo(props) {
+            return <WrappedComponent {...props} foo />;
+        }
 
       const wrappedComponentName = WrappedComponent.displayName
-        || WrappedComponent.name
-        || 'Component';
+          || WrappedComponent.name
+          || 'Component';
 
       WithFoo.displayName = `withFoo(${wrappedComponentName})`;
       return WithFoo;
@@ -154,8 +154,8 @@
     ```jsx
     // bad
     export default React.createClass({
-      displayName: 'ReservationCard',
-      // stuff goes here
+        displayName: 'ReservationCard',
+        // stuff goes here
     });
 
     // good
@@ -174,8 +174,8 @@
 
     // good
     <Foo
-      superLongParam="bar"
-      anotherSuperLongParam="baz"
+        superLongParam="bar"
+        anotherSuperLongParam="baz"
     />
 
     // if props fit in one line then keep it on the same line
@@ -183,8 +183,8 @@
 
     // children get indented normally
     <Foo
-      superLongParam="bar"
-      anotherSuperLongParam="baz"
+        superLongParam="bar"
+        anotherSuperLongParam="baz"
     >
       <Quux />
     </Foo>
@@ -246,14 +246,14 @@
     ```jsx
     // bad
     <Foo
-      UserName="hello"
-      phone_number={12345678}
+        UserName="hello"
+        phone_number={12345678}
     />
 
     // good
     <Foo
-      userName="hello"
-      phoneNumber={12345678}
+        userName="hello"
+        phoneNumber={12345678}
     />
     ```
 
@@ -262,12 +262,12 @@
     ```jsx
     // bad
     <Foo
-      hidden={true}
+        hidden={true}
     />
 
     // good
     <Foo
-      hidden
+        hidden
     />
     ```
 
@@ -326,53 +326,53 @@
 
   - Avoid using an array index as `key` prop, prefer a unique ID. ([why?](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318))
 
-  ```jsx
-  // bad
-  {todos.map((todo, index) =>
-    <Todo
-      {...todo}
-      key={index}
-    />
-  )}
+    ```jsx
+    // bad
+    {todos.map((todo, index) =>
+        <Todo
+            {...todo}
+            key={index}
+        />
+    )}
 
-  // good
-  {todos.map(todo => (
-    <Todo
-      {...todo}
-      key={todo.id}
-    />
-  ))}
-  ```
+    // good
+    {todos.map(todo => (
+        <Todo
+            {...todo}
+            key={todo.id}
+        />
+    ))}
+    ```
 
   - Always define explicit defaultProps for all non-required props.
 
   > Why? propTypes are a form of documentation, and providing defaultProps means the reader of your code doesn’t have to assume as much. In addition, it can mean that your code can omit certain type checks.
 
-  ```jsx
-  // bad
-  function SFC({ foo, bar, children }) {
-    return <div>{foo}{bar}{children}</div>;
-  }
-  SFC.propTypes = {
-    foo: PropTypes.number.isRequired,
-    bar: PropTypes.string,
-    children: PropTypes.node,
-  };
+    ```jsx
+    // bad
+    function SFC({ foo, bar, children }) {
+        return <div>{foo}{bar}{children}</div>;
+    }
+    SFC.propTypes = {
+        foo: PropTypes.number.isRequired,
+        bar: PropTypes.string,
+        children: PropTypes.node,
+    };
 
-  // good
-  function SFC({ foo, bar, children }) {
-    return <div>{foo}{bar}{children}</div>;
-  }
-  SFC.propTypes = {
-    foo: PropTypes.number.isRequired,
-    bar: PropTypes.string,
-    children: PropTypes.node,
-  };
-  SFC.defaultProps = {
-    bar: '',
-    children: null,
-  };
-  ```
+    // good
+    function SFC({ foo, bar, children }) {
+        return <div>{foo}{bar}{children}</div>;
+    }
+    SFC.propTypes = {
+        foo: PropTypes.number.isRequired,
+        bar: PropTypes.string,
+        children: PropTypes.node,
+    };
+    SFC.defaultProps = {
+        bar: '',
+        children: null,
+    };
+    ```
 
 ## Refs
 
@@ -381,12 +381,12 @@
     ```jsx
     // bad
     <Foo
-      ref="myRef"
+        ref="myRef"
     />
 
     // good
     <Foo
-      ref={(ref) => { this.myRef = ref; }}
+        ref={(ref) => { this.myRef = ref; }}
     />
     ```
 
@@ -397,24 +397,24 @@
     ```jsx
     // bad
     render() {
-      return <MyComponent className="long body" foo="bar">
+       return <MyComponent className="long body" foo="bar">
                <MyChild />
              </MyComponent>;
     }
 
     // good
     render() {
-      return (
-        <MyComponent className="long body" foo="bar">
-          <MyChild />
-        </MyComponent>
-      );
+        return (
+            <MyComponent className="long body" foo="bar">
+                <MyChild />
+            </MyComponent>
+        );
     }
 
     // good, when single line
     render() {
-      const body = <div>hello</div>;
-      return <MyComponent>{body}</MyComponent>;
+        const body = <div>hello</div>;
+        return <MyComponent>{body}</MyComponent>;
     }
     ```
 
@@ -435,13 +435,13 @@
     ```jsx
     // bad
     <Foo
-      bar="bar"
-      baz="baz" />
+        bar="bar"
+        baz="baz" />
 
     // good
     <Foo
-      bar="bar"
-      baz="baz"
+        bar="bar"
+        baz="baz"
     />
     ```
 
@@ -451,16 +451,16 @@
 
     ```jsx
     function ItemList(props) {
-      return (
-        <ul>
-          {props.items.map((item, index) => (
-            <Item
-              key={item.key}
-              onClick={() => doSomethingWith(item.name, index)}
-            />
-          ))}
-        </ul>
-      );
+        return (
+            <ul>
+                {props.items.map((item, index) => (
+                    <Item
+                        key={item.key}
+                        onClick={() => doSomethingWith(item.name, index)}
+                    />
+                ))}
+            </ul>
+        );
     }
     ```
 
@@ -471,30 +471,30 @@
     ```jsx
     // bad
     class extends React.Component {
-      onClickDiv() {
-        // do stuff
-      }
+        onClickDiv() {
+            // do stuff
+        }
 
-      render() {
-        return <div onClick={this.onClickDiv.bind(this)} />
-      }
+        render() {
+            return <div onClick={this.onClickDiv.bind(this)} />
+        }
     }
 
     // good
     class extends React.Component {
-      constructor(props) {
-        super(props);
+        constructor(props) {
+            super(props);
 
-        this.onClickDiv = this.onClickDiv.bind(this);
-      }
+            this.onClickDiv = this.onClickDiv.bind(this);
+        }
 
-      onClickDiv() {
-        // do stuff
-      }
+        onClickDiv() {
+            // do stuff
+        }
 
-      render() {
-        return <div onClick={this.onClickDiv} />
-      }
+        render() {
+            return <div onClick={this.onClickDiv} />
+        }
     }
     ```
 
@@ -504,20 +504,20 @@
     ```jsx
     // bad
     React.createClass({
-      _onClickSubmit() {
-        // do stuff
-      },
+        _onClickSubmit() {
+            // do stuff
+        },
 
-      // other stuff
+        // other stuff
     });
 
     // good
     class extends React.Component {
-      onClickSubmit() {
-        // do stuff
-      }
+        onClickSubmit() {
+            // do stuff
+        }
 
-      // other stuff
+        // other stuff
     }
     ```
 
@@ -526,12 +526,12 @@
     ```jsx
     // bad
     render() {
-      (<div />);
+        (<div />);
     }
 
     // good
     render() {
-      return (<div />);
+        return (<div />);
     }
     ```
 
@@ -560,23 +560,23 @@
     import React, { PropTypes } from 'react';
 
     const propTypes = {
-      id: PropTypes.number.isRequired,
-      url: PropTypes.string.isRequired,
-      text: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        url: PropTypes.string.isRequired,
+        text: PropTypes.string,
     };
 
     const defaultProps = {
-      text: 'Hello World',
+        text: 'Hello World',
     };
 
     class Link extends React.Component {
-      static methodsAreOk() {
-        return true;
-      }
+        static methodsAreOk() {
+            return true;
+        }
 
-      render() {
-        return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>
-      }
+        render() {
+            return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>
+        }
     }
 
     Link.propTypes = propTypes;
@@ -617,19 +617,5 @@
 
   [anti-pattern]: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
 
-## Translation
-
-  This JSX/React style guide is also available in other languages:
-
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [JasonBoy/javascript](https://github.com/JasonBoy/javascript/tree/master/react)
-  - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [jigsawye/javascript](https://github.com/jigsawye/javascript/tree/master/react)
-  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Español**: [agrcrobles/javascript](https://github.com/agrcrobles/javascript/tree/master/react)
-  - ![jp](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [mitsuruog/javascript-style-guide](https://github.com/mitsuruog/javascript-style-guide/tree/master/react)
-  - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [apple77y/javascript](https://github.com/apple77y/javascript/tree/master/react)
-  - ![pl](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Poland.png) **Polish**: [pietraszekl/javascript](https://github.com/pietraszekl/javascript/tree/master/react)
-  - ![Br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Portuguese**: [ronal2do/javascript](https://github.com/ronal2do/airbnb-react-styleguide)
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [leonidlebedev/javascript-airbnb](https://github.com/leonidlebedev/javascript-airbnb/tree/master/react)
-  - ![th](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Thailand.png) **Thai**: [lvarayut/javascript-style-guide](https://github.com/lvarayut/javascript-style-guide/tree/master/react)
-  - ![ua](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Ukraine.png) **Ukrainian**: [ivanzusko/javascript](https://github.com/ivanzusko/javascript/tree/master/react)
 
 **[⬆ back to top](#table-of-contents)**
