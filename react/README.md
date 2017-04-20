@@ -44,7 +44,7 @@
     class Listing extends React.Component {
         // ...
         render() {
-          return <div>{this.state.hello}</div>;
+            return <div>{this.state.hello}</div>;
         }
     }
     ```
@@ -126,12 +126,12 @@
             return <WrappedComponent {...props} foo />;
         }
 
-      const wrappedComponentName = WrappedComponent.displayName
-          || WrappedComponent.name
-          || 'Component';
+        const wrappedComponentName = WrappedComponent.displayName
+            || WrappedComponent.name
+            || 'Component';
 
-      WithFoo.displayName = `withFoo(${wrappedComponentName})`;
-      return WithFoo;
+        WithFoo.displayName = `withFoo(${wrappedComponentName})`;
+        return WithFoo;
     }
     ```
 
@@ -186,7 +186,7 @@
         superLongParam="bar"
         anotherSuperLongParam="baz"
     >
-      <Quux />
+        <Quux />
     </Foo>
     ```
 
@@ -316,13 +316,13 @@
 
   > Why? Inconsistencies between keyboard shortcuts and keyboard commands used by people using screenreaders and keyboards complicate accessibility.
 
-  ```jsx
-  // bad
-  <div accessKey="h" />
+    ```jsx
+    // bad
+    <div accessKey="h" />
 
-  // good
-  <div />
-  ```
+    // good
+    <div />
+    ```
 
   - Avoid using an array index as `key` prop, prefer a unique ID. ([why?](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318))
 
