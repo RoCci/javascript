@@ -477,11 +477,6 @@ Other Style Guides
       const { firstName, lastName } = user;
       return `${firstName} ${lastName}`;
     }
-
-    // best
-    function getFullName({ firstName, lastName }) {
-      return `${firstName} ${lastName}`;
-    }
     ```
 
   <a name="destructuring--array"></a><a name="5.2"></a>
