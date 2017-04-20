@@ -1284,27 +1284,10 @@ Other Style Guides
     foo.init();
     ```
 
-  <a name="modules--multiline-imports-over-newlines"></a>
-  - [10.8](#modules--multiline-imports-over-newlines) Multiline imports should be indented just like multiline array and object literals.
 
-    > Why? The curly braces follow the same indentation rules as every other curly brace block in the style guide, as do the trailing commas.
-
-    ```javascript
-    // bad
-    import {longNameA, longNameB, longNameC, longNameD, longNameE} from 'path';
-
-    // good
-    import {
-        longNameA,
-        longNameB,
-        longNameC,
-        longNameD,
-        longNameE,
-    } from 'path';
-    ```
 
   <a name="modules--no-webpack-loader-syntax"></a>
-  - [10.9](#modules--no-webpack-loader-syntax) Disallow Webpack loader syntax in module import statements.
+  - [10.8](#modules--no-webpack-loader-syntax) Disallow Webpack loader syntax in module import statements.
  eslint: [`import/no-webpack-loader-syntax`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
     > Why? Since using Webpack syntax in the imports couples the code to a module bundler. Prefer using the loader syntax in `webpack.config.js`.
 
@@ -3111,5 +3094,6 @@ We encourage you to fork this guide and change the rules to fit your team's styl
 
 - Removed destructuring objects in the parameter list of methods
 - Changed indenting from 2 to 4
+- Removed 10.8 (multiline module imports)
 
 # };
