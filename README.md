@@ -2,16 +2,10 @@
 
 *A mostly reasonable approach to JavaScript, based in no small part on the fine work of the folks at [Airbnb](https://github.com/airbnb/javascript)*
 
-[![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
-[![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 
 Other Style Guides
- - [ES5 (Deprecated)](https://github.com/airbnb/javascript/tree/es5-deprecated/es5)
  - [React](react/)
- - [CSS-in-JavaScript](css-in-javascript/)
- - [CSS & Sass](https://github.com/airbnb/css)
- - [Ruby](https://github.com/airbnb/ruby)
 
 ## Table of Contents
 
@@ -2084,7 +2078,7 @@ Other Style Guides
             super();
 
             // TODO: total should be configurable by an options param
-            zthis.total = 0;
+            this.total = 0;
         }
     }
     ```
